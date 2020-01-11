@@ -6,18 +6,20 @@ level=0;
 started=false;
 //start the game
 $(document).keydown(function(){
-
-  if (started !=true){
-    setTimeout(function () {
-      nextSequence();
-    }, 1500);
-    started=true;
-    console.log("1");
-    $("h1").text("Ready");
-
-  }
+  gameStarter();
 });
 
+$(".start").click(function(){
+  gameStarter();
+  $(".start").fadeOut();
+});
+
+$(".start").mouseover(function(){
+  $(".start").css("color","red");
+});
+$(".start").mouseout(function(){
+  $(".start").css("color","#FEF2BF");
+});
 //clciking button effects
 $(".btn").click(function(event){
   //console.log(event.target.id);
@@ -27,7 +29,16 @@ $(".btn").click(function(event){
   playSound(userChosenColour);
   animatePress(userChosenColour);
 });
-
+function gameStarter(){
+  if (started !=true){
+    setTimeout(function () {
+      nextSequence();
+    }, 1500);
+    started=true;
+    console.log("1");
+    $("h1").text("Ready");
+  }
+}
 function nextSequence(){
   level++;
   console.log("2");
@@ -71,7 +82,8 @@ function checkAnswer(currentLevel){
     setTimeout(function(){
       $("body").removeClass("game-over");
     },200);
-    $("h1").text("Game Over, Your  score is "+level +" Press Any Key to Restart");
+    $("h1").text("Game Over, Your  score is "+level +" Press Any Key");
+    $(".start").fadeIn();
     startOver();
   }
 
