@@ -2,6 +2,10 @@ body {
   text-align: center;
   background-color: #011F3F;
 }
+footer {
+  color: #DBEDF3;
+  font-family: sans-serif;
+}
 
 #level-title {
   font-family: 'Press Start 2P', cursive;
